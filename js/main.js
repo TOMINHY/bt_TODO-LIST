@@ -1,7 +1,7 @@
 let tasks = [];
 let tasksCompleted = [];
 
-
+//render
 let renderTask = (tasks) => {
   let content = "";
   tasks.map((task, index) => {
@@ -19,6 +19,7 @@ let renderTask = (tasks) => {
   document.getElementById("todo").innerHTML = content;
 };
 
+//local
 let setLocalStorage = (tasks) => {
   localStorage.setItem("taskList", JSON.stringify(tasks));
 };
@@ -32,6 +33,7 @@ let getLocalStorage = () => {
 };
 getLocalStorage();
 
+//add
 let addTasksList = () => {
   let inputFeild = document.querySelector("#newTask").value;
 
@@ -48,6 +50,7 @@ let addTasksList = () => {
 };
 document.getElementById("addItem").onclick = addTasksList;
 
+//check
 let complete = (name) => {
   tasks.map((task) => {
     if (task.name === name) {
@@ -79,10 +82,9 @@ let complete = (name) => {
 
 let deleteTask = (index) => {
   if (confirm("Do you really want to delete")) {
-    getLocalStorage(tasks);
     tasks.splice(index, 1);
     setLocalStorage(tasks);
-    renderTask(tasks);
+    getLocalStorage();
   }
 };
 
